@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	      <meta property="og:locale" content="nl_NL" />
+	      <meta property="og:type" content="website" />
+		<meta property="og:title" content="Delivery O Serrano" />
+		<meta property="og:description" content="Peça agora e ganhe frete grátis em compras acima de R$50,00, estamos te esperando!" />
+		<meta property="og:url" content="https://www.jsmartpdv.com.br/go/oserrano/#/" />
+		<meta property="og:site_name" content="O Serrano" />
+		<meta property="og:image" content="https://jsmartpdv.com.br/site/images/author/ez_logo.png" />
+		<meta property="og:image:secure_url" content="https://jsmartpdv.com.br/site/images/author/ez_logo.png" />
+		<meta property="og:image:width" content="340" >
+		<meta property="og:image:height" content="340" />
+	    <meta charset="utf-8" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	    <meta name="description" content="É fácil registrar um domínio e criar seu site. Este site está em construço e hospedado na KingHost, hospedagem de sites e e-mails confiável." />
+	    <title>Site Hospedado na KingHost | Data Center no Brasil</title>
+	    <link rel="shortcut icon" href="/favicon.ico">
+	    <link href='//fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+	<meta name='description' , content='' />
+	<meta name='author' , content='' />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="theme-color" content="#00479b" />
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name='apple-mobile-web-app-title' , content='My App' />
+	<meta name='apple-mobile-web-app-capable' , content='yes' />
+	<meta name='apple-mobile-web-app-status-bar-style' , content='black' />
+
+	<meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0, minimal-ui" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+	<!-- QUASAR -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@^3.5.2/animate.min.css" rel="stylesheet" type="text/css">
+	<link href="https://cdn.jsdelivr.net/npm/eva-icons@^1.0.0/style/eva-icons.css" rel="stylesheet" type="text/css">
+	<link href="./styles/index.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@1.9.14/dist/quasar.min.css" rel="stylesheet" type="text/css">
+	<link rel='manifest' href='./manifest.json'>
+	<style>
+	</style>
+
+</head>
+
+<body style="/* font-family: 'Baloo Paaji 2', cursive !important; */">
+        <v-app id="app">
+            <pwa-install></pwa-install>
+            <Layout>
+					<transition name="slide-fade">
+						<router-view></router-view>
+					</transition>
+					<!-- <Home @checkout="gotoCheckout()"></Home>
+					<Checkout v-model="checkout"></Checkout> -->
+            </Layout>
+            
+		</v-app>
+
+
+	<!-- SCRIPTS   -->
+	<script crossorigin="use-credentials" type="module" src="./dependencies/lodash/lodash.min.js"></script>
+
+	<!-- MOMENT -->
+	<script src="./dependencies/moment/moment-with-locales.min.js"></script>
+	<script src="./dependencies/moment/pt-br.js"></script>
+
+	<!-- JADE -->
+	<!-- <script src="./dependencies/jade/jade.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jade/1.11.0/jade.min.js"></script>
+
+	<!-- VUE -->
+	<script src="./dependencies/vue/vue.js"></script>
+	<script src="./dependencies/vue/vue-router.js"></script>
+	<script src="./dependencies/vue/vuex.js"></script>
+	<!-- <script src="./dependencies/vuetify/vuetify.js"></script> -->
+
+
+	<script>
+		
+		window.quasarConfig = {
+		  brand: {
+		    primary: '#3f72af',
+		    secondary: '#dbe2ef',
+		    accent: '#827397',
+
+		    dark: '#1d1d1d',
+
+		   //  positive: '#3f72af',
+		    negative: '#c70039',
+		    info: '#76a4ad',
+		    warning: '#cfa32b'
+		  }
+		}
+
+	</script>
+
+	<!-- QUASAR -->
+   <script src="https://cdn.jsdelivr.net/npm/quasar@1.12.13/dist/quasar.umd.min.js"></script>
+   <script type="module" src="https://cdn.jsdelivr.net/npm/@pwabuilder/pwainstall"></script>
+
+	<script crossorigin="use-credentials" type="module" src="./app.js"></script>
+
+	<script type="module">
+		/*
+		 This code uses the pwa-update web component https://github.com/pwa-builder/pwa-update to register your service worker,
+		 tell the user when there is an update available and let the user know when your PWA is ready to use offline.
+		*/
+		
+		import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+		
+		const el = document.createElement('pwa-update');
+		document.body.appendChild(el);
+
+	</script> 
+
+
+</body>
+
+</html>

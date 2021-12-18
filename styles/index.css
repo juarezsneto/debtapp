@@ -1,0 +1,83 @@
+/*.scroll-full .scroll > .absolute {
+	background-color: purple !important;
+	height: 100% !important;
+}*/
+body, html{     
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;  
+}
+
+/*ANIMATIONS*/
+
+/*FADE*/
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+
+/*SLIDE*/
+.slide-fade-enter-active {
+  transition: all .15s ease;
+}
+.slide-fade-leave-active {
+  transition: all .15s ease; /* cubic-bezier(1.0, 0.5, 0.8, 1.0); */
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+
+.etiqueta {
+
+  background-color: #FFFF3D !important;
+  /* min-width: 200px; */
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px !important;
+  
+}
+
+.nome {
+  
+  font-size: 14px;
+  line-height: 16px;
+  
+}
+
+.rs {
+  
+  font-size: 16px;
+  line-height: 25px;
+  font-weight: 600;
+
+}
+
+.valor {
+
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 600;
+
+}
+
+.my-card {
+  width: 100%;
+  max-width: 140px;
+  min-width: 140px;
+  
+}
+
+.picture {
+
+  max-height: 128px;
+  max-width: 140px;
+
+}
