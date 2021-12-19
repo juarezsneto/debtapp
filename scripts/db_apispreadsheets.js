@@ -1,8 +1,8 @@
 import { toReais } from "../scripts/utils.js"
 
 const API = "https://api.apispreadsheets.com/data/"
-const KEY_PRODUTOS = "bkOeqLfbjfxRLBJg"
-const KEY_PEDIDOS = 1032
+const KEY_PRODUTOS = "edDbic2MXNXVC9eb"
+const KEY_PEDIDOS = "edDbic2MXNXVC9eb"
 const LINK_PRODUTOS = API + KEY_PRODUTOS + "/"
 const LINK_PEDIDOS = API + KEY_PEDIDOS + "/"
 
@@ -31,22 +31,19 @@ function post(packet){
    
    const toSheet = {
       
-      código: moment().format('YYMMDDHHmmssSS'),
-      cliente: "Anônimo",
-      contato: packet.client.phone,
-      endereço: packet.client.address,
-      pagamento: packet.client.payment,
-      cesta: packet.cart.map(
-         item=>{
-            return item.qty+"x - "+toReais(item.value)+" - "+item.product.nome
-         }
-      ).join("\n"),
-      subtotal: toReais(packet.summary.subtotal),
-      entrega: toReais(packet.summary.deliveryfee),
-      total: toReais(packet.summary.total),
+      _id: moment().format('YYMMDDHHmmssSS'),
+      name: "Não identificado",
+      description: "Sem Descrição",
+      value: 0,
+      date: new Date().getTime(),
+      currency:0,
+      pm: 5.6,
+      conversion: 5600,
+      parent: "",
+      type: 1,
+      ...packet,
 
    }
-
 
    return new Promise((resolve, reject) => {
 

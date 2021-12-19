@@ -7,8 +7,8 @@ const purpose= "Wrapper for Autocomplete Online Search"
 const template = jade.compile(`
 
 
-q-footer.bg-grey-3.shadow-up-11( height-hint="150")
-   q-toolbar.bg-grey-3(style="height:60px")
+q-footer.bg-grey-3.shadow-up-11( height-hint="150", )
+   q-toolbar.bg-grey-3(style="height:70px")
       slot
          
 `)({
