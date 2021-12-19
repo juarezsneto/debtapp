@@ -1,7 +1,7 @@
 import { toReais } from "../scripts/utils.js"
 
 const API = "https://api.apispreadsheets.com/data/"
-const KEY_PRODUTOS = 955
+const KEY_PRODUTOS = "bkOeqLfbjfxRLBJg"
 const KEY_PEDIDOS = 948
 const LINK_PRODUTOS = API + KEY_PRODUTOS + "/"
 const LINK_PEDIDOS = API + KEY_PEDIDOS + "/"
