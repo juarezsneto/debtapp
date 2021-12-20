@@ -110,12 +110,25 @@ export default new Vuex.Store({
 
         async init({ state, commit, dispatch }) {
 
+                const local = Memory.getLocally();
+    
+                if(local != undefined) Object.assign(state,local);
+    
+                console.log("LOCAL", local.productList)
            
-                console.log("UDPATE_PRODUCTS")
-                commit("UPDATE_PRODUCTS", await update("produtos"));
-                dispatch("sync")
+                if (new Date().getTime() > ( (state.lastUpdate||0) + (1000*60*10)) || local==undefined){
+                
+                    await dispatch("forceUpdate")
+
+                }
            
 
+        },
+
+        async forceUpdate({state, commit, dispatch}) {
+            commit("UPDATE_PRODUCTS", await update("produtos"));
+            console.log("UPDATE_PRODUCTS", state.productList)
+            dispatch("sync")
         },
 
         async ping({ state }) {
@@ -130,6 +143,7 @@ export default new Vuex.Store({
 
         async sync({ getters }) {
             Memory.saveLocally(getters.snapshot);
+            console.log("synchronized")
         },
 
         async clear({ getters }) {
@@ -151,6 +165,12 @@ export default new Vuex.Store({
 
         categories(state) {
             return _.uniq(_.map(state.productList, "parent"))
+        },
+
+        categoriesSummary(state){
+
+            return _.mapValues(_.keyBy(_.map(_.groupBy(state.productList, 'parent'), (o,idx) => { return { id: idx, summed: _.sumBy(o,'value') }}), "id"), "summed")
+            
         },
 
         summary(state) {

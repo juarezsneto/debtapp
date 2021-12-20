@@ -3,6 +3,10 @@ function toReais(input){
    return "R$ " + parseFloat(input).toFixed(2).replace(".", ",")
 }
 
+function toMoney(input){
+   return "$ " + parseFloat(input).toFixed(2).replace(".", ",")
+}
+
 function consultaCep(cep){
 
    const API = "http://cep.la/"

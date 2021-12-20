@@ -31,8 +31,7 @@ let template = jade.compile(`
             // q-carousel-slide(:name='4', img-src='https://images.unsplash.com/photo-1551797802-f2dd1ec0033e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80')
         
 
-    .full-width.q-pa-lg
-        
+    //.full-width.q-pa-lg
         q-input(filled='', v-model='search', placeholder="Busque o que você precisa")
             template(v-slot:prepend='')
                 q-icon(name='eva-search-outline')
@@ -50,12 +49,22 @@ let template = jade.compile(`
                         q-list
                             q-item(v-for="item in categories" clickable @click="setCategory(item)")
                                 q-item-section {{item}}
+                                span.text-subtitle2.text-green-6(v-if="categoriesSummary[item]>=0") {{toMoney(categoriesSummary[item])}}
+                                span.text-subtitle2.text-red-6(v-else) {{toMoney(categoriesSummary[item])}}
+                            q-separator
+                            q-item
+                                q-item-section 
+                                    q-btn(flat icon="eva-refresh-outline" size="sm" @click="refresh()") Update
+
+
+
                 q-btn(v-else flat unelevated color="grey-6" icon="eva-arrow-left" @click="prevStep()")
             .col.full-height.column.justify-center.q-pl-md.q-pr-md
                 .row.no-wrap.q-mr-md(style="overflow-x:auto")
                     q-tab-panels.full-width(v-model="currentStep", animated)
                         q-tab-panel.q-pa-xs.bg-grey-3.clickable(name="idle" clickable)
-                            .text-h5.text-green-3 $ {{currentSummary}}
+                            .text-h5.text-green-6(v-if="currentSummary>=0") $ {{currentSummary}}
+                            .text-h5.text-red-6(v-else) $ {{currentSummary}}
                             .text-subtitle2.text-grey-6 {{currentCategory}}
                         q-tab-panel.q-pa-xs.bg-grey-3(name="price")
                             q-input.full-width(ref="inputprice" dense, v-model='price', placeholder="Insira o Valor", @focus="onFocus($event)", mask="#.##", fill-mask="0", reverse-fill-mask, input-class="text-right", label="Valor")
@@ -121,7 +130,7 @@ export default Vue.component(name,
         ...Vuex.mapState({ "Cart": state => state.cart }),
         ...Vuex.mapState({ "productList": state => state.productList }),
         ...Vuex.mapState({ "isWaiting": state => state.isWaiting }),
-        ...Vuex.mapGetters(["shelves", "categories", "summary"]),
+        ...Vuex.mapGetters(["categoriesSummary","shelves", "categories", "summary"]),
 
         totalSum(){
 
@@ -186,6 +195,10 @@ export default Vue.component(name,
             return "R$ "+parseFloat(input).toFixed(2).replace(".",",")
         },
 
+        toMoney(input){
+            return "$ "+parseFloat(input).toFixed(2).replace(".",",")
+        },
+
         gotoCheckout(){
             this.$router.push("/checkout")
         },
@@ -219,7 +232,11 @@ export default Vue.component(name,
 
         async addTransaction(){
             await this.$store.dispatch("packAndSend",{name: this.name, value: this.price * (-1*this.signal), parent: this.currentCategory})
-            this.$store.dispatch("init")
+            this.$store.dispatch("forceUpdate")
+        },
+
+        async refresh() {
+            this.$store.dispatch("forceUpdate")
         },
 
         prevStep(){
@@ -235,7 +252,7 @@ export default Vue.component(name,
 
         setCategory(category){
             this.currentCategory = category;
-            console.log(this.currentCategory)
+            console.log(this.currentCategory, this.categoriesSummary)
         },
 
 

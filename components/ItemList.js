@@ -21,7 +21,8 @@ q-list.rounded-borders
                 q-item-label.text-grey-6 {{item.description}}
             q-item-section(side)
                 slot(:item="item")
-                q-item-label(style="font-weight:400; font-size: 16px" lines='1') \${{item.value}}
+                q-item-label.text-green-6(v-if="item.value>=0" style="font-weight:400; font-size: 16px" lines='1') \${{item.value}}
+                q-item-label.text-red-6(v-else style="font-weight:400; font-size: 16px" lines='1') \${{item.value}}
                 //q-icon(name='eva-info-outline', color='green')
         q-separator
 
